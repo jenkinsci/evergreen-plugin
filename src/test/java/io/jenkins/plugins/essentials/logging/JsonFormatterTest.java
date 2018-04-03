@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 public class JsonFormatterTest {
@@ -15,13 +16,17 @@ public class JsonFormatterTest {
     @Test
     public void format() {
 
-        final String msg = "the message\nand another line";
+        final String msg = "the message\nand another line {0}";
         final LogRecord record = new LogRecord(Level.INFO, msg);
+        record.setParameters(new String[]{"yay"});
+
         record.setThrown(new IllegalStateException());
 
         final String json = new JsonFormatter().format(record);
 
         assertTrue(StringUtils.isNotBlank(json));
-        assertThat(json, CoreMatchers.containsString(msg.replaceAll("\n", "\\\\n")));
+        assertThat(json, containsString(msg.replaceAll("\n", "\\\\n")
+                                                .replaceAll("\\{.*}", "")));
+        assertThat(json, containsString("yay"));
     }
 }

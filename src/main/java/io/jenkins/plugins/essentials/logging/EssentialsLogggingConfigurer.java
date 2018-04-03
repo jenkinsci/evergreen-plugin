@@ -10,7 +10,9 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.FileHandler;
+import java.util.logging.Filter;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
@@ -34,14 +36,15 @@ public class EssentialsLogggingConfigurer {
         // FIXME: should I use the no-arg ctor to let usual sysprops be usable?
         FileHandler fileHandler = new FileHandler(getFilePattern(), 10 * 1000 * 1000, 5, false);
         fileHandler.setFormatter(new JsonFormatter());
+        fileHandler.setFilter(record -> record.getLevel().intValue() >= Level.WARNING.intValue());
 
         Jenkins.logRecords.stream()
-                .filter(record -> record.getLevel().intValue() >= Level.WARNING.intValue())
                 .sorted(Collections.reverseOrder(Comparator.comparingInt(record1 -> record1.getLevel().intValue())))
                 .forEach(fileHandler::publish);
 
         Logger.getLogger("").addHandler(fileHandler);
     }
+
 
     @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     private static String getFilePattern() {
@@ -60,4 +63,5 @@ public class EssentialsLogggingConfigurer {
     private static int getMaxNumberOfLogs() {
         return 256;
     }
+
 }
