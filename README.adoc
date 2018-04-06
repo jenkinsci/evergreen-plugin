@@ -1,0 +1,7 @@
+= Essentials Jenkins Plugin
+
+This plugin is designed to offer the necessary glue for running link:https://github.com/jenkinsci/jep/tree/master/jep/300[Jenkins Essentials].
+
+TIP: you should generally **not** install this plugin yourself.
+It is designed to be installed automatically for a Jenkins Essentials instance.
+
