@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class EssentialsLogggingConfigurerTest {
+public class EssentialsLoggingConfigurerTest {
 
     @Rule
     public JenkinsRule j = new JenkinsRule();

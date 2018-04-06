@@ -10,17 +10,16 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.FileHandler;
-import java.util.logging.Filter;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * Parses {@link Jenkins#logRecords} to push them to the
+ * Parses {@link Jenkins#logRecords} and  to push them to the
  */
-public class EssentialsLogggingConfigurer {
+@SuppressWarnings("unused")
+public class EssentialsLoggingConfigurer {
 
-    private static final Logger LOGGER = Logger.getLogger(EssentialsLogggingConfigurer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EssentialsLoggingConfigurer.class.getName());
 
     @Initializer(after = InitMilestone.EXTENSIONS_AUGMENTED)
     public static void configure() throws Exception {
