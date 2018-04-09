@@ -18,6 +18,7 @@ public class JsonFormatterTest {
 
         final String msg = "the message\nand another line {0}";
         final LogRecord record = new LogRecord(Level.INFO, msg);
+        record.setLoggerName("The name");
         record.setParameters(new String[]{"yay"});
 
         record.setThrown(new IllegalStateException());
@@ -28,5 +29,6 @@ public class JsonFormatterTest {
         assertThat(json, containsString(msg.replaceAll("\n", "\\\\n")
                                                 .replaceAll("\\{.*}", "")));
         assertThat(json, containsString("yay"));
+        assertThat(json, containsString("\"name\":\"The name\""));
     }
 }
