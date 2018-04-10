@@ -19,9 +19,9 @@ public class JsonFormatter extends Formatter {
         JSONObject jsonLog = new JSONObject();
 
         jsonLog.put("timestamp", record.getMillis());
+        jsonLog.put("name", record.getLoggerName());
         jsonLog.put("level", record.getLevel().getName());
         jsonLog.put("message", messageFormatter.formatMessage(record));
-
         final Throwable thrown = record.getThrown();
         if (thrown != null) {
             jsonLog.put("exception", Functions.printThrowable(thrown));
