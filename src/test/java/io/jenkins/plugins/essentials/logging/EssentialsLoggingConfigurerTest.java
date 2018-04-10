@@ -33,6 +33,7 @@ public class EssentialsLoggingConfigurerTest {
 
     @Test
     public void leaveBritneyAlone() throws Exception {
+        System.out.println("Reading log files");
         Files.list(SafeTimerTask.getLogsRoot().toPath())
                 .filter(path -> !path.endsWith(".lck"))
                 .forEach(path -> {
