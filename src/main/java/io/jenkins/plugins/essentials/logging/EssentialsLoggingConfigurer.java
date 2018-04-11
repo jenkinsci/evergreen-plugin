@@ -56,6 +56,7 @@ public class EssentialsLoggingConfigurer {
         FileHandler fileHandler = new FileHandler(filePattern, 10 * 1000 * 1000, 5, false);
         fileHandler.setFormatter(new JsonFormatter());
         fileHandler.setFilter(record -> record.getLevel().intValue() >= Level.WARNING.intValue());
+        fileHandler.setEncoding("UTF-8");
         return fileHandler;
     }
 
