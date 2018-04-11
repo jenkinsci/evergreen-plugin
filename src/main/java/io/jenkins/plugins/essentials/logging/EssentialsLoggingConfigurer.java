@@ -1,13 +1,17 @@
 package io.jenkins.plugins.essentials.logging;
 
+import com.google.common.annotations.VisibleForTesting;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.WebAppMain;
 import hudson.init.InitMilestone;
 import hudson.init.Initializer;
 import hudson.triggers.SafeTimerTask;
 import jenkins.model.Jenkins;
+import org.kohsuke.accmod.Restricted;
+import org.kohsuke.accmod.restrictions.NoExternalUse;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,16 +35,28 @@ public class EssentialsLoggingConfigurer {
 
         checkNotTooManyLogsAlready();
 
-        // FIXME: should I use the no-arg ctor to let usual sysprops be usable?
-        FileHandler fileHandler = new FileHandler(getFilePattern(), 10 * 1000 * 1000, 5, false);
-        fileHandler.setFormatter(new JsonFormatter());
-        fileHandler.setFilter(record -> record.getLevel().intValue() >= Level.WARNING.intValue());
+        FileHandler fileHandler = createFileHandler();
 
         Jenkins.logRecords.stream()
                 .sorted(Collections.reverseOrder(Comparator.comparingInt(record1 -> record1.getLevel().intValue())))
                 .forEach(fileHandler::publish);
 
         Logger.getLogger("").addHandler(fileHandler);
+    }
+
+    private static FileHandler createFileHandler() throws IOException {
+        return createFileHandler(getFilePattern());
+    }
+
+    @Restricted(NoExternalUse.class)
+    @VisibleForTesting
+    static FileHandler createFileHandler(String filePattern) throws IOException {
+
+        // FIXME: should we use the no-arg ctor to let usual sysprops be usable?
+        FileHandler fileHandler = new FileHandler(filePattern, 10 * 1000 * 1000, 5, false);
+        fileHandler.setFormatter(new JsonFormatter());
+        fileHandler.setFilter(record -> record.getLevel().intValue() >= Level.WARNING.intValue());
+        return fileHandler;
     }
 
     /**
