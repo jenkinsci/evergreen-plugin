@@ -53,7 +53,7 @@ public class EssentialsLoggingConfigurer {
     static FileHandler createFileHandler(String filePattern) throws IOException {
 
         // FIXME: should we use the no-arg ctor to let usual sysprops be usable?
-        FileHandler fileHandler = new FileHandler(filePattern, 10 * 1000 * 1000, 5, false);
+        FileHandler fileHandler = new FileHandler(filePattern, 10 * 1000 * 1000, 5, true);
         fileHandler.setFormatter(new JsonFormatter());
         fileHandler.setFilter(record -> record.getLevel().intValue() >= Level.WARNING.intValue());
         fileHandler.setEncoding("UTF-8");
