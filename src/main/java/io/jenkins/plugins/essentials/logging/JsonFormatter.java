@@ -18,6 +18,7 @@ public class JsonFormatter extends Formatter {
     public String format(LogRecord record) {
         JSONObject jsonLog = new JSONObject();
 
+        jsonLog.put("version", 1);
         jsonLog.put("timestamp", record.getMillis());
         jsonLog.put("name", record.getLoggerName());
         jsonLog.put("level", record.getLevel().getName());
