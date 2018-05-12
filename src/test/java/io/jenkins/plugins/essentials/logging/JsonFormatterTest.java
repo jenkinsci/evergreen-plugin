@@ -1,15 +1,13 @@
 package io.jenkins.plugins.essentials.logging;
 
 import net.sf.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class JsonFormatterTest {
 
@@ -34,8 +32,11 @@ public class JsonFormatterTest {
         assertThat(jsonObject.get("level")).isNotNull();
         assertThat(jsonObject.get("message")).isNotNull();
 
-        final Object exception = jsonObject.get("exception");
-        assertThat(exception).isNotNull();
+        final JSONObject exception = (JSONObject) jsonObject.get("exception");
+        assertThat((Map) exception).isNotNull();
+
+        //assertThat(exception)
+
         assertThat(json).contains(msg.replaceAll("\n", "\\\\n")
                                           .replaceAll("\\{.*}", ""));
         assertThat(json).contains("yay");
