@@ -18,14 +18,21 @@ public class JsonFormatter extends Formatter {
     public String format(LogRecord record) {
         JSONObject jsonLog = new JSONObject();
 
+        jsonLog.put("version", 1);
         jsonLog.put("timestamp", record.getMillis());
         jsonLog.put("name", record.getLoggerName());
         jsonLog.put("level", record.getLevel().getName());
-        jsonLog.put("message", messageFormatter.formatMessage(record));
+        jsonLog.put("message", protectSpecialCharacters(messageFormatter.formatMessage(record)));
         final Throwable thrown = record.getThrown();
         if (thrown != null) {
-            jsonLog.put("exception", Functions.printThrowable(thrown));
+            JSONObject exception = new JSONObject();
+            exception.put("raw", Functions.printThrowable(thrown));
+            jsonLog.put("exception", exception);
         }
         return jsonLog.toString() + System.lineSeparator();
+    }
+
+    private String protectSpecialCharacters(String s) {
+        return s.replaceAll("\n", "\\\\n");
     }
 }
