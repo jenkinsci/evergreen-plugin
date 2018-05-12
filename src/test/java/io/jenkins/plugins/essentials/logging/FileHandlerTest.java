@@ -1,7 +1,6 @@
 package io.jenkins.plugins.essentials.logging;
 
 import org.apache.commons.io.FileUtils;
-import org.hamcrest.core.StringContains;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -12,8 +11,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FileHandlerTest {
 
@@ -38,10 +36,10 @@ public class FileHandlerTest {
         final LogRecord record = new LogRecord(Level.SEVERE, msg);
         final File file = new File(logsFolder, "blah.log");
         final FileHandler fileHandler = EssentialsLoggingConfigurer.createFileHandler(file.getAbsolutePath());
-        assertTrue(fileHandler.isLoggable(record));
+        assertThat(fileHandler.isLoggable(record)).isTrue();
         fileHandler.publish(record);
 
         String content = FileUtils.readFileToString(new File(logsFolder, "blah.log.0"), "UTF-8");
-        assertThat(content, StringContains.containsString(msg));
+        assertThat(content).contains(msg);
     }
 }
