@@ -30,8 +30,9 @@ public class EssentialsLoggingConfigurer {
     @Initializer(after = InitMilestone.EXTENSIONS_AUGMENTED)
     public static void configure() throws Exception {
 
-        // Lower Level, debugging hack
-        LOGGER.log(Level.SEVERE, "I started!");
+        // Log to test the logging system.
+        // On purpose: the message has a newline, and an exception is attached.
+        LOGGER.log(Level.SEVERE, "Essentials plugin: \nI started!", new Exception());
 
         checkNotTooManyLogsAlready();
 
