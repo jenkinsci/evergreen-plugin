@@ -32,7 +32,7 @@ public class EssentialsLoggingConfigurer {
 
         // Log to test the logging system.
         // On purpose: the message has a newline, and an exception is attached.
-        LOGGER.log(Level.SEVERE, "Essentials plugin: \nI started!", new Exception());
+        LOGGER.log(Level.SEVERE, "Essentials plugin: \nPlugin has started! Please ignore the following exception", new SmokeTestException());
 
         checkNotTooManyLogsAlready();
 
