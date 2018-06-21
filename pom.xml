@@ -9,10 +9,10 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>essentials</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>0.2</revision>
+        <revision>0.3</revision>
         <changelist>-SNAPSHOT</changelist>
         <!-- Using latest on purpose -->
         <jenkins.version>2.114</jenkins.version>
