@@ -32,7 +32,7 @@ public class InessentialItemTypeFilter extends ExtensionFilter {
 
         for (String toRemove : COMPONENTS_TO_REMOVE) {
             if (componentTypeClassName.contains(toRemove)) {
-                LOGGER.log(Level.WARNING, "Filtering out {0} from {1} type discovery",
+                LOGGER.log(Level.FINE, "Filtering out {0} from {1} type discovery",
                            new Object[]{componentTypeClassName, type});
                 return false;
             }
