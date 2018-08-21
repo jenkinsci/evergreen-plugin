@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import hudson.Functions;
 import net.sf.json.JSONObject;

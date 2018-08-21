@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials;
+package io.jenkins.plugins.evergreen;
 
 import hudson.Extension;
 import hudson.model.Api;
@@ -11,25 +11,25 @@ import org.kohsuke.stapler.export.ExportedBean;
 import javax.annotation.CheckForNull;
 
 @ExportedBean
-@Symbol("essentials")
+@Symbol("evergreen")
 @Extension
-public class EssentialsManagementLink extends ManagementLink {
+public class EvergreenManagementLink extends ManagementLink {
     @CheckForNull
     @Override
     public String getIconFileName() {
-        return "/plugin/essentials/images/essentials.svg";
+        return "/plugin/evergreen/images/evergreen.svg";
     }
 
     @CheckForNull
     @Override
     public String getDisplayName() {
-        return "Essentials";
+        return "Evergreen";
     }
 
     @CheckForNull
     @Override
     public String getUrlName() {
-        return "essentials";
+        return "evergreen";
     }
 
     public Api getApi() {

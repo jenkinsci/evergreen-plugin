@@ -1,26 +1,25 @@
-package io.jenkins.plugins.essentials;
+package io.jenkins.plugins.evergreen;
 
 import hudson.ExtensionList;
 import org.junit.Rule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class EssentialsManagementLinkTest {
+public class EvergreenManagementLinkTest {
     @Rule
     public JenkinsRule j = new JenkinsRule();
 
     @Test
     public void jobTypes() {
 
-        final ExtensionList<EssentialsManagementLink> extensionList = j.jenkins.getExtensionList(EssentialsManagementLink.class);
+        final ExtensionList<EvergreenManagementLink> extensionList = j.jenkins.getExtensionList(EvergreenManagementLink.class);
 
         assertThat(extensionList).hasSize(1);
-        EssentialsManagementLink link = extensionList.get(0);
+        EvergreenManagementLink link = extensionList.get(0);
 
         final String[] topLevelDescriptors = link.getTopLevelDescriptors();
         assertThat(topLevelDescriptors).isNotEmpty();

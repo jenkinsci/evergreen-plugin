@@ -7,10 +7,10 @@
   <div class="container-fluid">
   <div class="row">
   <div class="col-md-24">
-    <h1>Jenkins Essentials</h1>
+    <h1>Jenkins Evergreen</h1>
 
-    <!-- TODO: define some redirect landing page for Essentials for jenkins.io ? -->
-    <p>This page will receive Essentials specific informations, but is empty for now.</p>
+    <!-- TODO: define some redirect landing page for Evergreen for jenkins.io ? -->
+    <p>This page will receive Evergreen specific informations, but is empty for now.</p>
   </div>
   </div>
   </div>

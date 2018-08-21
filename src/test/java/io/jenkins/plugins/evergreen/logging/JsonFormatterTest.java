@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import net.sf.json.JSONObject;
 import org.junit.Test;

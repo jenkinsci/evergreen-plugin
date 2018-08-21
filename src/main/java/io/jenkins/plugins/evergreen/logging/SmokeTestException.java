@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;

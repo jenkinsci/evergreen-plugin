@@ -1,7 +1,7 @@
-= Essentials Jenkins Plugin
+= Evergreen Jenkins Plugin
 
-This plugin is designed to offer the necessary glue for running link:https://github.com/jenkinsci/jep/tree/master/jep/300[Jenkins Essentials].
+This plugin is designed to offer the necessary glue for running link:https://github.com/jenkinsci/jep/tree/master/jep/300[Jenkins Evergreen].
 
 TIP: you should generally **not** install this plugin yourself.
-It is designed to be installed automatically for a Jenkins Essentials instance.
+It is designed to be installed automatically for a Jenkins Evergreen instance.
 
