@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import hudson.Functions;
 import hudson.triggers.SafeTimerTask;
@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class EssentialsLoggingConfigurerTest {
+public class EvergreenLoggingConfigurerTest {
 
     @Rule
     public JenkinsRule j = new JenkinsRule() {

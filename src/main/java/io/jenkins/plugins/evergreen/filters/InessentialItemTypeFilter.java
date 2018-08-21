@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.filters;
+package io.jenkins.plugins.evergreen.filters;
 
 import hudson.Extension;
 import hudson.ExtensionComponent;

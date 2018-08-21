@@ -8,7 +8,7 @@
         <relativePath />
     </parent>
     <groupId>io.jenkins.plugins</groupId>
-    <artifactId>essentials</artifactId>
+    <artifactId>evergreen</artifactId>
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
@@ -18,15 +18,15 @@
         <jenkins.version>2.114</jenkins.version>
         <java.level>8</java.level>
     </properties>
-    <name>Essentials Plugin</name>
-    <description>Jenkins Essentials Plugin - Note: you should generally never install this plugin yourself.</description>
+    <name>Evergreen Plugin</name>
+    <description>Jenkins Evergreen Plugin - Note: you should generally never install this plugin yourself.</description>
     <licenses>
         <license>
             <name>MIT License</name>
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-    <url>https://wiki.jenkins.io/display/JENKINS/Essentials+Plugin</url>
+    <url>https://wiki.jenkins.io/display/JENKINS/Evergreen+Plugin</url>
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>

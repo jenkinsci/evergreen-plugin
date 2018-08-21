@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Rule;
@@ -35,7 +35,7 @@ public class FileHandlerTest {
         final String msg = "Héhé, comîn chô và, lØ.";
         final LogRecord record = new LogRecord(Level.SEVERE, msg);
         final File file = new File(logsFolder, "blah.log");
-        final FileHandler fileHandler = EssentialsLoggingConfigurer.createFileHandler(file.getAbsolutePath());
+        final FileHandler fileHandler = EvergreenLoggingConfigurer.createFileHandler(file.getAbsolutePath());
         assertThat(fileHandler.isLoggable(record)).isTrue();
         fileHandler.publish(record);
 

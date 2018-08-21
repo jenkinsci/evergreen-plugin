@@ -1,4 +1,4 @@
-package io.jenkins.plugins.essentials.logging;
+package io.jenkins.plugins.evergreen.logging;
 
 import com.google.common.annotations.VisibleForTesting;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -23,16 +23,16 @@ import java.util.logging.Logger;
  * Parses {@link Jenkins#logRecords} and  to push them to the
  */
 @SuppressWarnings("unused")
-public class EssentialsLoggingConfigurer {
+public class EvergreenLoggingConfigurer {
 
-    private static final Logger LOGGER = Logger.getLogger(EssentialsLoggingConfigurer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EvergreenLoggingConfigurer.class.getName());
 
     @Initializer(after = InitMilestone.EXTENSIONS_AUGMENTED)
     public static void configure() throws Exception {
 
         // Log to test the logging system.
         // On purpose: the message has a newline, and an exception is attached.
-        LOGGER.log(Level.SEVERE, "Essentials plugin: \nPlugin has started! Please ignore the following exception", new SmokeTestException());
+        LOGGER.log(Level.SEVERE, "Evergreen plugin: \nPlugin has started! Please ignore the following exception", new SmokeTestException());
 
         checkNotTooManyLogsAlready();
 
@@ -85,7 +85,7 @@ public class EssentialsLoggingConfigurer {
     private static String getFilePattern() {
         final File logsRoot = SafeTimerTask.getLogsRoot();
         logsRoot.mkdir();
-        return new File(logsRoot, "essentials.log.%g").getAbsolutePath();
+        return new File(logsRoot, "evergreen.log.%g").getAbsolutePath();
     }
 
     /**
