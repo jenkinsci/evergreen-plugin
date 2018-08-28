@@ -34,11 +34,6 @@
       <tag>${scmTag}</tag>
   </scm>
     <dependencies>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>evergreen</artifactId>
-            <version>0.9</version>
-        </dependency>
     </dependencies>
     <repositories>
         <repository>
