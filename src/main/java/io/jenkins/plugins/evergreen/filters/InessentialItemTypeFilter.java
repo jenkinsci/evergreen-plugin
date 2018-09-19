@@ -23,6 +23,9 @@ public class InessentialItemTypeFilter extends ExtensionFilter {
 
         // "Native" Maven jobs
         COMPONENTS_TO_REMOVE.add("hudson.maven.MavenModuleSet$DescriptorImpl");
+
+        // "Matrix" jobs
+        COMPONENTS_TO_REMOVE.add("hudson.matrix.MatrixProject$DescriptorImpl");
     }
 
     @Override
