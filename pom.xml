@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.20</version>
+        <version>3.33</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.plugins</groupId>
@@ -15,7 +15,7 @@
         <revision>1.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <!-- Using always very recent on purpose -->
-        <jenkins.version>2.141</jenkins.version>
+        <jenkins.version>2.161</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <name>Evergreen Plugin</name>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.jenkins-ci.main</groupId>
             <artifactId>maven-plugin</artifactId>
-            <version>3.1</version>
+            <version>3.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -64,6 +64,13 @@
                     <artifactId>symbol-annotation</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <!-- Upper bounds issue -->
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <repositories>
