@@ -5,7 +5,12 @@ import com.google.common.annotations.VisibleForTesting;
 import hudson.Extension;
 import hudson.init.InitMilestone;
 import hudson.init.Initializer;
+import hudson.model.PersistentDescriptor;
+import jenkins.model.GlobalConfiguration;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jenkinsci.Symbol;
+import org.kohsuke.accmod.Restricted;
+import org.kohsuke.accmod.restrictions.NoExternalUse;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -55,4 +60,8 @@ public class EvergreenCascUpdater {
         }
     }
 
+    @Extension @Symbol("remotingCLI")
+    @Restricted(NoExternalUse.class)
+    public static class RemotingCLIEvergreenStub extends GlobalConfiguration implements PersistentDescriptor {
+    }
 }
