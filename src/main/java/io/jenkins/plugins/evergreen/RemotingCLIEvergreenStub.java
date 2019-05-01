@@ -30,10 +30,11 @@ import java.util.logging.Logger;
  * So using the Evergreen Jenkins plugin, we detect these outdated files, and update them in place, so next update will not just crash
  * instances.
  */
-@Extension
-public class EvergreenCascUpdater {
+@Extension @Symbol("remotingCLI")
+@Restricted(NoExternalUse.class)
+public class RemotingCLIEvergreenStub extends GlobalConfiguration implements PersistentDescriptor {
 
-    private static final Logger LOGGER = Logger.getLogger(EvergreenCascUpdater.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RemotingCLIEvergreenStub.class.getName());
     private static final String SHA1_BEFORE_CHANGE = "8d4ef50d006e24d26c4eaf0a9122a2dfc4f40dd9";
 
     @Initializer(after = InitMilestone.EXTENSIONS_AUGMENTED, before = InitMilestone.JOB_LOADED)
@@ -50,7 +51,7 @@ public class EvergreenCascUpdater {
 
             if (SHA1_BEFORE_CHANGE.equals(fileSha1)) {
                 LOGGER.log(Level.WARNING, "Outdated config file detected, updating it with new version");
-                Files.copy(EvergreenCascUpdater.class.getResourceAsStream(
+                Files.copy(RemotingCLIEvergreenStub.class.getResourceAsStream(
                         "/io/jenkins/plugins/evergreen/create-admin-user-without-remotingCLI.yaml"),
                            createAdminUserFilePath,
                            StandardCopyOption.REPLACE_EXISTING);
@@ -60,8 +61,4 @@ public class EvergreenCascUpdater {
         }
     }
 
-    @Extension @Symbol("remotingCLI")
-    @Restricted(NoExternalUse.class)
-    public static class RemotingCLIEvergreenStub extends GlobalConfiguration implements PersistentDescriptor {
-    }
 }

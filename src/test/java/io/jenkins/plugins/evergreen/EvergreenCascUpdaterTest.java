@@ -30,7 +30,7 @@ public class EvergreenCascUpdaterTest {
                    StandardCopyOption.REPLACE_EXISTING);
 
         // When
-        EvergreenCascUpdater.fixFileIfNeeded(filePath);
+        RemotingCLIEvergreenStub.fixFileIfNeeded(filePath);
 
         // Then
         final byte[] data = Files.readAllBytes(filePath);
