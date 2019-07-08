@@ -20,6 +20,10 @@ public class AdminMonitorsDeactivator extends AsyncPeriodicWork {
 
     private static final Logger LOGGER = Logger.getLogger(AdminMonitorsDeactivator.class.getName());
 
+    public AdminMonitorsDeactivator() {
+        super("Evergreen Administrative Monitor Deactivator");
+    }
+
     protected AdminMonitorsDeactivator(String name) {
         super("Evergreen Administrative Monitor Deactivator");
     }
