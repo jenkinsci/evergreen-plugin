@@ -47,6 +47,7 @@ public class AdminMonitorsDeactivator extends AsyncPeriodicWork {
         }
     }
 
+    /** Nothing should reenable this in theory, but doing this regularly shouldn't hurt */
     @Override
     public long getRecurrencePeriod() {
         return TimeUnit.MINUTES.toMillis(5);
